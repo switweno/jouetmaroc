@@ -20,6 +20,7 @@ function orderNow(productName, imageUrl) {
                 });
             });
         });
+		
 function changeImage(button, index) {
             // الحصول على العنصر الأبو الذي يحتوي على الصور
             const sliderIndex = button.getAttribute('data-slider');
@@ -47,23 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault(); // تعطيل النقر بزر الفأرة الأيمن
-});
 
-document.addEventListener("copy", function(e) {
-    e.preventDefault(); // تعطيل النسخ
-});
-
-document.addEventListener("cut", function(e) {
-    e.preventDefault(); // تعطيل القص
-});
-
-document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
-        e.preventDefault(); // تعطيل Ctrl + C و Ctrl + X و Ctrl + U
-    }
-});
 
   
  
