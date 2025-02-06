@@ -20,7 +20,6 @@ function orderNow(productName, imageUrl) {
                 });
             });
         });
-		
 function changeImage(button, index) {
             // الحصول على العنصر الأبو الذي يحتوي على الصور
             const sliderIndex = button.getAttribute('data-slider');
@@ -48,25 +47,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault(); // تعطيل النقر بزر الفأرة الأيمن
+});
 
-let lastScrollTop = 0; // حفظ آخر مكان تم التمرير إليه
-let navbar = document.getElementById('navbar'); // الحصول على عنصر القائمة
+document.addEventListener("copy", function(e) {
+    e.preventDefault(); // تعطيل النسخ
+});
 
-window.addEventListener('scroll', function() {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+document.addEventListener("cut", function(e) {
+    e.preventDefault(); // تعطيل القص
+});
 
-    // إذا كان المستخدم قد قام بالتمرير لأسفل
-    if (currentScroll > lastScrollTop) {
-        navbar.style.top = "-100px"; // إخفاء القائمة
-    } else {
-        navbar.style.top = "0"; // إظهار القائمة عندما يعود المستخدم لأعلى
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
+        e.preventDefault(); // تعطيل Ctrl + C و Ctrl + X و Ctrl + U
     }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // تأكد من أن التمرير لا يذهب أقل من الصفر
-}, false);
-
-
-
+});
 
   
  
