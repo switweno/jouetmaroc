@@ -1,14 +1,20 @@
 
 function orderNow(productName, imageUrl) {
     const phoneNumber = "212762609147"; // رقم الهاتف
+    if (!productName || !imageUrl) {
+        alert("الرجاء إدخال اسم المنتج ورابط الصورة.");
+        return;
+    }
+
     const message = `مرحبًا، أريد الاستفسار عن ${productName}، هل يمكنكم إرسال التفاصيل؟`;
-    
+
     // تضمين رابط الصورة في الرسالة
     const messageWithImage = `${message} يمكنك رؤية الصورة من خلال هذا الرابط: ${imageUrl}`;
-    
+
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageWithImage)}`;
     window.open(whatsappURL, '_blank');
 }
+
 
 
     
@@ -47,23 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault(); // تعطيل النقر بزر الفأرة الأيمن
-});
 
-document.addEventListener("copy", function(e) {
-    e.preventDefault(); // تعطيل النسخ
-});
-
-document.addEventListener("cut", function(e) {
-    e.preventDefault(); // تعطيل القص
-});
-
-document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
-        e.preventDefault(); // تعطيل Ctrl + C و Ctrl + X و Ctrl + U
-    }
-});
 
   
  
