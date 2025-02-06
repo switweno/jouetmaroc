@@ -63,6 +63,16 @@ nav a {
     white-space: nowrap; /* يمنع كسر النص داخل الرابط */
 }
 
+@media only screen and (max-width: 768px) {
+    /* منع التكبير على الأجهزة الصغيرة */
+    body {
+      touch-action: manipulation; /* يمنع التكبير باستخدام الإيماءات */
+    }
+    meta[name="viewport"] {
+      content: "width=device-width, initial-scale=1.0, user-scalable=no";
+    }
+  }
+
 /* إبقاء الروابط في المنتصف حتى لو صغرت الشاشة كثيرًا */
 @media (max-width: 300px) {
     nav {
