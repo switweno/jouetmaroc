@@ -1,0 +1,381 @@
+/* تعريف المتغيرات الأساسية */
+:root {
+    --primary-color: #d32f2f; /* اللون الأساسي (أحمر) */
+    --secondary-color: #2d2d2d; /* اللون الثانوي (داكن) */
+}
+
+body {
+    font-family: 'Cairo', Arial, sans-serif; /* نوع الخط المستخدم */
+    line-height: 1.8; /* المسافة بين الأسطر */
+    margin: 0; /* هامش خارجي صفر */
+    padding: 0; /* وسادة داخلية صفر */
+    background-color: #f9f9f9; /* لون خلفية الصفحة */
+    color: #333; /* لون النص */
+}
+html {
+            scroll-behavior: smooth;
+        }
+.container {
+    max-width: 1200px; /* العرض الأقصى للحاوية */
+    margin: 0 auto; /* تمركز الحاوية في المنتصف */
+    padding: 5px; /* وسادة داخلية */
+}
+
+/* أساليب الرأس (Header) */
+header {
+    background: var(--primary-color); /* لون الخلفية أحمر */
+    color: #fff; /* لون النص أبيض */
+    text-align: center; /* تمركز النص في المنتصف */
+    padding: 2rem 1rem; /* وسادة داخلية */
+    font-size: 2.2rem; /* حجم الخط */
+    font-weight: 700; /* سمك الخط */
+    letter-spacing: -1px; /* مسافة بين الحروف */
+    margin-top: 4rem; /* هامش أعلى */
+}
+
+/* أساليب التنقل (Navigation) */
+nav {
+    background: linear-gradient(135deg, #222, #444); /* تدرج أسود إلى رمادي */
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center; /* إبقاء العناصر دائمًا في المنتصف */
+    align-items: center;
+    flex-wrap: wrap; /* يسمح للروابط بالنزول فقط عند الحاجة */
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* الروابط */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    white-space: nowrap; /* يمنع كسر النص داخل الرابط */
+}
+
+/* إبقاء الروابط في المنتصف حتى لو صغرت الشاشة كثيرًا */
+@media (max-width: 300px) {
+    nav {
+        flex-direction: column; /* ترتيب العناصر عموديًا عند تصغير الشاشة */
+        align-items: center; /* توسيط العناصر */
+    }
+    nav a {
+        text-align: center; /* تأكد أن الروابط نفسها في المنتصف */
+    }
+}
+
+
+/* تأثير عند تمرير الماوس */
+nav a:hover {
+    color: var(--primary-color); /* تغيير لون النص عندover*/
+    background: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
+}
+/* قسم المنتجات (Products Section) */
+.products {
+    display: grid; /* تصميم شبكة */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* عدد الأعمدة يتغير حسب الشاشة */
+    gap: 1rem; /* الفاصل بين العناصر */
+    padding: 1rem 0 0rem; /* وسادة داخلية */
+}
+
+.product-card {
+    background: #fff; /* لون الخلفية أبيض */
+    border-radius: 15px; /* زوايا مستديرة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
+     padding: 1rem;
+      margin: 0 0.5rem 1rem;
+    text-align: center; /* تمركز النص */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انتقال سلس */
+    position: relative; /* وضع نسبي */
+    overflow: hidden; /* إخفاء المحتوى الزائد */
+    margin-bottom: 1rem; /* هامش أسفل البطاقة */
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* رفع البطاقة للأعلى */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* زيادة الظل */
+}
+
+.product-card img {
+    width: 100%; /* عرض الصورة كامل */
+     height: 200px; /* ارتفاع الصورة */
+    object-fit: cover; /* تناسب الصورة */
+    border-radius: 10px; /* زوايا مستديرة */
+    margin-bottom: 0.5rem; /* هامش أسفل الصورة */
+}
+
+.product-title {
+    font-size: 1.2rem; /* حجم عنوان المنتج */
+    margin: 1rem 0; /* هامش حول العنوان */
+    font-weight: 700; /* سمك الخط */
+    color: var(--secondary-color); /* لون النص */
+}
+
+.product-price {
+    color: var(--primary-color); /* لون السعر */
+    font-size: 1.3rem; /* حجم الخط */
+    font-weight: 700; /* سمك الخط */
+    margin: 1rem 0; /* هامش حول السعر */
+}
+
+.buy-btn {
+    background: linear-gradient(135deg, #FF0000, #B22222); /* تدرج ألوان الخلفية */
+    color: white; /* لون النص أبيض */
+    padding: 0.5rem 1.5rem; /* وسادة داخلية */
+    border: none; /* بدون حدود */
+    border-radius: 10px; /* زوايا مستديرة */
+    cursor: pointer; /* مؤشر النقر */
+    font-family: 'Cairo'; /* نوع الخط */
+    font-size: 1rem; /* حجم الخط */
+    font-weight: 600; /* سمك الخط */
+    transition: all 0.3s ease; /* انتقال سلس */
+    width: 90%; /* عرض الزر */
+    margin: 1rem auto; /* تمركز الزر */
+}
+
+.buy-btn:hover {
+    transform: scale(1.05); /* زيادة حجم الزر */
+    box-shadow: 5px 5px 10px rgba(100, 100, 100, 0.7); /* ظل ثلاثي الأبعاد */
+}
+
+
+/* قسم حول (About Section) */
+.about {
+    text-align: center; /* تمركز النص */
+    padding: 3rem 2rem; /* وسادة داخلية */
+    background: #fff; /* لون الخلفية */
+    margin: 1.3rem 0; /* هامش حول القسم */
+    border-radius: 15px; /* زوايا مستديرة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
+}
+
+.about h2 {
+    font-size: 2rem; /* حجم الخط */
+    color: var(--secondary-color); /* لون النص */
+    margin-bottom: 0.5rem; /* هامش أسفل العنوان */
+}
+
+/* أساليب التذييل (Footer Styles) */
+footer {
+    background: linear-gradient(135deg, #222, #444); /* تدرج أسود إلى رمادي */
+    color: white; /* لون النص */
+    text-align: center; /* تمركز النص */
+    padding: 0.7rem 1rem; /* وسادة داخلية أكبر قليلاً */
+    margin-top: 1rem; /* هامش أعلى أكبر */
+    font-size: 0.9rem; /* حجم الخط */
+    border-top: 2px solid #555; /* خط علوي بلون رمادي فاتح */
+}
+
+
+/* استعلامات الوسائط (Media Queries) */
+@media (max-width: 768px) {
+    nav a {
+        margin: 0 0.3rem; /* تقليل الهامش عند الشاشات الصغيرة */
+        font-size: 0.9rem; /* تقليل حجم الخط */
+        padding: 0.2rem 0.2rem; /* تقليل الوسادة الداخلية */
+    }
+    header {
+        font-size: 1.8rem; /* تقليل حجم الخط */
+        padding: 1.5rem 1rem; /* تقليل الوسادة الداخلية */
+    }
+    .products {
+        grid-template-columns: 1fr; /* عرض واحد فقط لكل بطاقة */
+    }
+}
+
+@media (min-width: 1200px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr); /* ثلاثة أعمدة على الشاشات الكبيرة */
+    }
+}
+
+/* عناوين الأقسام */
+.section-title {
+    text-align: center; /* تمركز النص */
+    font-size: 2.5rem; /* حجم الخط */
+    color: var(--secondary-color); /* لون النص */
+    margin: 1rem 0; /* هامش حول العنوان */
+    position: relative; /* وضع نسبي */
+}
+
+.section-title::after {
+    content: ''; /* إنشاء خط تحت العنوان */
+    width: 140px; /* عرض الخط */
+    height: 3px; /* سمك الخط */
+    background: var(--primary-color); /* لون الخط */
+    display: block; /* تحويل إلى عنصر كتلة */
+    margin: 1rem auto; /* تمركز الخط */
+}
+
+/* قسم الاتصال (Contact Section) */
+.contact-section {
+    padding: 1.5rem 0; /* وسادة داخلية */
+    background: #f9f9f9; /* لون الخلفية */
+}
+
+.contact-info {
+    text-align: center; /* تمركز النص */
+    margin: 0 auto; /* تمركز العنصر */
+    max-width: 1200px; /* العرض الأقصى */
+}
+
+.info-card {
+    background: #fff; /* لون الخلفية */
+    padding: 2rem; /* وسادة داخلية */
+    border-radius: 15px; /* زوايا مستديرة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
+}
+ /* تحسين قسم الاتصال */
+.info-item {
+    display: flex; /* تصميم مرنة */
+    align-items: center; /* تمركز العمودي */
+    justify-content: center; /* تمركز الأفقي */
+    margin-bottom: 1.5rem; /* هامش أسفل العنصر */
+    padding: 1rem; /* وسادة داخلية */
+    background: #f9f9f9; /* لون الخلفية */
+    border-radius: 10px; /* زوايا مستديرة */
+	flex-direction: column;
+	text-align: center;
+}
+
+.info-item i {
+    font-size: 1.2rem; /* حجم الخط */
+    color: var(--primary-color); /* لون النص */
+    margin-left: 1rem; /* هامش يسار */
+	margin: 0 0 0.5rem 0;
+}
+
+.social-links {
+    display: flex; /* تصميم مرنة */
+    gap: 1rem; /* فاصل بين الروابط */
+    margin-top: 1.5rem; /* هامش أعلى */
+    justify-content: center; /* تمركز الروابط */
+}
+
+.social-links a {
+    color: var(--secondary-color); /* لون النص */
+    font-size: 1.5rem; /* حجم الخط */
+    transition: color 0.3s ease; /* انتقال سلس */
+}
+
+.social-links a:hover {
+    color: var(--primary-color); /* تغيير لون النص عند悬over*/
+}
+
+/* قسم الأسئلة الشائعة (FAQ Section) */
+.faq-container {
+    max-width: 1165px; /* العرض الأقصى */
+    margin: auto; /* تمركز العنصر */
+    background: white; /* لون الخلفية */
+    padding: 15px; /* وسادة داخلية */
+    border-radius: 15px; /* زوايا مستديرة */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل ثلاثي الأبعاد */
+}
+
+.faq-question {
+    background: var(--primary-color); /* لون الخلفية */
+    color: white; /* لون النص */
+     padding: 10px; /* وسادة داخلية */
+    margin: 10px 0; /* هامش حول السؤال */
+    cursor: pointer; /* مؤشر النقر */
+    border-radius: 15px; /* زوايا مستديرة */
+    font-weight: bold; /* سمك الخط */
+	font-size: 0.9rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* ظل ثلاثي الأبعاد */
+    transition: all 0.3s ease; /* انتقال سلس */
+}
+
+.faq-question:hover {
+    background: #d32f2f; /* تغيير لون الخلفية عندover*/
+    transform: scale(1.02); /* زيادة حجم العنصر */
+}
+
+.faq-answer {
+    display: none; /* إخفاء الإجابة */
+    padding: 10px; /* وسادة داخلية */
+     margin-bottom: 1rem;; /* هامش أسفل الإجابة */
+    background: #f1f1f1; /* لون الخلفية */
+    border-radius: 15px; /* زوايا مستديرة */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05); /* ظل ثلاثي الأبعاد داخلي */
+    transition: all 0.3s ease-in-out; /* انتقال سلس */
+}
+
+/* ميزات المنتج (Product Features) */
+.product-features {
+    margin: 0.5rem 0; /* هامش حول الميزات */
+    font-size: 0.9rem; /* حجم الخط */
+    color: #666; /* لون النص */
+	display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+}
+ .product-features span {
+        background: #f3f3f3;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+
+.product-features i {
+    color: var(--primary-color); /* لون الرمز */
+    margin-left: 0.5rem; /* هامش يسار */
+}
+
+/* العناوين العامة */
+h2 {
+    text-align: center; /* تمركز النص */
+    width: 100%; /* عرض كامل */
+}
+ 
+
+        /* تصميم عرض الصور المتعددة */
+        .image-slider {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-slider img {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-slider img.active {
+            display: block;
+        }
+
+        .slider-buttons {
+            margin-top: 10px;
+        }
+
+        .slider-buttons button {
+            background-color: #6A0DAD ;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            margin: 0 3px;
+            border-radius: 5px;
+            cursor: pointer;
+			font-family: 'Tajawal'; /* نوع الخط */
+			font-size: 0.7rem;
+        }
+
+        .slider-buttons button.active {
+            background-color: #228B22;
+        }
+		.image-slider img {
+    display: none;
+}
+

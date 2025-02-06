@@ -1,0 +1,204 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOUET MAROC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/bike-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <nav>
+        <a href="#">المتجر</a>
+        <a href="#products">المنتجات</a>
+        <a href="#about">من نحن</a>
+        <a href="#contact">اتصل بنا</a>
+    </nav>
+    
+<header> JOUET MAROC </header>
+<div class="container">
+    <h2 class="section-title" id="products">منتجاتنا</h2>
+    <!-- داخل قسم المنتجات في ملف HTML --><section class="products">
+
+    <!--1 البطاقات الأصلية -->
+    <div class="product-card">
+                <div class="image-slider" data-slider="0">
+    <img src="images/bike1.jpg" alt="صورة 1" class="active">
+    <img src="images/bike2.jpg" alt="صورة 2">
+    <img src="images/bike3.jpg" alt="صورة 3">
+	<img src="images/bike5.jpg" alt="4ورة 3">
+</div>
+<div class="slider-buttons" data-slider="0">
+    <button onclick="changeImage(this, 0)" data-slider="0">PHOTO 3</button>
+    <button onclick="changeImage(this, 1)" data-slider="0">PHOTO 2</button>
+    <button onclick="changeImage(this, 2)" data-slider="0">PHOTO 1</button>
+	<button onclick="changeImage(this, 3)" data-slider="0">PHOTO 0</button>
+</div>
+                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT</h2>
+                <p class="product-price">8199 درهم</p>
+				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+    <span><i class="fas fa-tachometer-alt"></i> سرعة 42km/h</span>
+                <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://www.w3schools.com/w3images/fjords.jpg')">🛒 اطلب عبر واتساب</button>
+
+
+            </div>
+	 <!--2 البطاقات الأصلية -->
+	
+    <div class="product-card">
+                <div class="image-slider" data-slider="1">
+    <img src="images/bike4.jpg" alt="صورة 1" class="active">
+    <img src="images/bike5.jpg" alt="صورة 2">
+    <img src="images/bike6.jpg" alt="صورة 3">
+</div>
+<div class="slider-buttons" data-slider="1">
+    <button onclick="changeImage(this, 0)" data-slider="1">PHOTO 1</button>
+    <button onclick="changeImage(this, 1)" data-slider="1">PHOTO 2</button>
+    <button onclick="changeImage(this, 2)" data-slider="1">PHOTO 3</button>
+</div>
+                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11</h2>
+                <p class="product-price">8,699 درهم</p>
+				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+    <span><i class="fas fa-tachometer-alt"></i> سرعة 51km/h</span>
+                <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11')"> اطلب الآن</button>
+            </div>
+ <!--3 البطاقات الأصلية -->
+
+<div class="product-card">
+                <div class="image-slider" data-slider="2">
+    <img src="images/bike7.jpg" alt="صورة 1" class="active">
+    <img src="images/bike8.jpg" alt="صورة 2">
+    <img src="images/bike9.jpg" alt="صورة 3">
+</div>
+<div class="slider-buttons" data-slider="2">
+    <button onclick="changeImage(this, 0)" data-slider="2">PHOTO 1</button>
+    <button onclick="changeImage(this, 1)" data-slider="2">PHOTO 2</button>
+    <button onclick="changeImage(this, 2)" data-slider="2">PHOTO 3</button>
+</div>
+                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE</h2>
+                <p class="product-price">7,199 درهم</p>
+				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+    <span><i class="fas fa-tachometer-alt"></i> سرعة 50km/h</span>
+                <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE SHINE')"> اطلب الآن</button>
+            </div>
+
+ <!--4 البطاقات الأصلية -->
+
+ <div class="product-card">
+    <div class="image-slider" data-slider="3">
+<img src="images/bike10.jpg" alt="صورة 1" class="active">
+<img src="images/bike11.jpg" alt="صورة 2">
+<img src="images/bike12.jpg" alt="صورة 3">
+</div>
+<div class="slider-buttons" data-slider="3">
+<button onclick="changeImage(this, 0)" data-slider="3">PHOTO 1</button>
+<button onclick="changeImage(this, 1)" data-slider="3">PHOTO 2</button>
+<button onclick="changeImage(this, 2)" data-slider="3">PHOTO 3</button>
+</div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE S</h2>
+    <p class="product-price">7,199 درهم</p>
+    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE SHINE S')"> اطلب الآن</button>
+</div>
+ <!--5 البطاقات الأصلية -->
+
+<div class="product-card">
+    <div class="image-slider" data-slider="4">
+<img src="images/bike13.jpg" alt="صورة 1" class="active">
+<img src="images/bike14.jpg" alt="صورة 2">
+<img src="images/bike15.jpg" alt="صورة 3">
+</div>
+<div class="slider-buttons" data-slider="4">
+<button onclick="changeImage(this, 0)" data-slider="4">PHOTO 1</button>
+<button onclick="changeImage(this, 1)" data-slider="4">PHOTO 2</button>
+<button onclick="changeImage(this, 2)" data-slider="4">PHOTO 3</button>
+</div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE 2025</h2>
+    <p class="product-price">5,499 درهم</p>
+    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE 2025')"> اطلب الآن</button>
+</div>
+ <!--6 البطاقات الأصلية -->
+
+<div class="product-card">
+    <div class="image-slider" data-slider="4">
+<img src="images/bike13.jpg" alt="صورة 1" class="active">
+<img src="images/bike14.jpg" alt="صورة 2">
+<img src="images/bike15.jpg" alt="صورة 3">
+</div>
+<div class="slider-buttons" data-slider="4">
+<button onclick="changeImage(this, 0)" data-slider="4">PHOTO 1</button>
+<button onclick="changeImage(this, 1)" data-slider="4">PHOTO 2</button>
+<button onclick="changeImage(this, 2)" data-slider="4">PHOTO 3</button>
+</div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE 2025</h2>
+    <p class="product-price">5,499 درهم</p>
+    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
+<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE 2025')"> اطلب الآن</button>
+</div>
+</section>
+ </div>
+ <!--2 البطاقات الأصلية الميزد من-->
+
+ <div class="container">
+        <section id="about" class="about">
+            <h2 class="section-title">من نحن</h2>
+            <p>نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.</p>
+        </section>
+        </div>
+    <div class="faq-container">
+        <h2>الأسئلة الشائعة</h2>
+        <div class="faq-item">
+            <div class="faq-question">📦 هل التوصيل مجاني لجميع المدن؟</div>
+            <div class="faq-answer">نعم، نوفر التوصيل المجاني لجميع المدن بدون أي تكاليف إضافية.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">⏳ كم يستغرق وقت التوصيل؟</div>
+            <div class="faq-answer">عادةً ما يستغرق التوصيل من 2 إلى 5 أيام عمل حسب موقعك.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">💳 ما هي طرق الدفع المتاحة؟</div>
+            <div class="faq-answer">نقبل الدفع عند الاستلام، التحويل البنكي، والدفع الإلكتروني.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">🔄 هل يمكنني إرجاع المنتج إذا لم يعجبني؟</div>
+            <div class="faq-answer">نعم، يمكنك إرجاع المنتج خلال 7 أيام بشرط أن يكون في حالته الأصلية.</div>
+        </div>
+    </div>
+       <section id="contact" class="contact-section">
+        
+    <div class="contact-info">
+        <div class="info-card">
+            <h3>معلومات التواصل</h3>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p>0762609147</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>info@e-bike.com</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>الدار البيضاء_رياض الولفة</p>
+            </div>
+            <div class="social-links">
+                <a href="https://wa.me/212762609147"><i class="fab fa-whatsapp"></i></a>
+              
+                <a href="https://www.facebook.com/jouetmaroc2/"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 JOUET MAROC </p>
+    
+</footer>
+ <script src="script.js"></script></body>
+</html>
