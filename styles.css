@@ -49,9 +49,10 @@ nav {
     flex-wrap: wrap; /* يسمح للروابط بالنزول فقط عند الحاجة */
     gap: 0.5rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease; /* انتقال سلس عند إخفاء أو إظهار القائمة */
 }
 
-/* الروابط */
+/* تنسيق الروابط داخل القائمة */
 nav a {
     color: white;
     text-decoration: none;
@@ -63,10 +64,16 @@ nav a {
     white-space: nowrap; /* يمنع كسر النص داخل الرابط */
 }
 
+
+
 @media only screen and (max-width: 768px) {
     /* منع التكبير على الأجهزة الصغيرة */
     body {
       touch-action: manipulation; /* يمنع التكبير باستخدام الإيماءات */
+    }
+	/* التأثير على جميع الأجهزة */
+    nav {
+        top: 0;
     }
     meta[name="viewport"] {
       content: "width=device-width, initial-scale=1.0, user-scalable=no";
@@ -74,7 +81,7 @@ nav a {
   }
 
 /* إبقاء الروابط في المنتصف حتى لو صغرت الشاشة كثيرًا */
-@media (max-width: 300px) {
+@media (max-width: 450px) {
     nav {
         flex-direction: column; /* ترتيب العناصر عموديًا عند تصغير الشاشة */
         align-items: center; /* توسيط العناصر */

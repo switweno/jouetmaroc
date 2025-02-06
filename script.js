@@ -49,6 +49,24 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+let lastScrollTop = 0; // حفظ آخر مكان تم التمرير إليه
+let navbar = document.getElementById('navbar'); // الحصول على عنصر القائمة
+
+window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    // إذا كان المستخدم قد قام بالتمرير لأسفل
+    if (currentScroll > lastScrollTop) {
+        navbar.style.top = "-100px"; // إخفاء القائمة
+    } else {
+        navbar.style.top = "0"; // إظهار القائمة عندما يعود المستخدم لأعلى
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // تأكد من أن التمرير لا يذهب أقل من الصفر
+}, false);
+
+
+
 
   
  
