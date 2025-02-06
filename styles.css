@@ -9,7 +9,7 @@ body {
     line-height: 1.8; /* المسافة بين الأسطر */
     margin: 0; /* هامش خارجي صفر */
     padding: 0; /* وسادة داخلية صفر */
-    background-color: #f9f9f9; /* لون خلفية الصفحة */
+    background-color: #f1c40f;; /* لون خلفية الصفحة */
     color: #333; /* لون النص */
 }
 html {
@@ -35,7 +35,7 @@ header {
 
 /* أساليب التنقل (Navigation) */
 nav {
-    background: linear-gradient(135deg, #222, #444); /* تدرج أسود إلى رمادي */
+    background: linear-gradient(135deg, #6a1b9a, #9c4dcc); /* تدرج من البنفسجي الغامق إلى الفاتح */
     padding: 1rem;
     position: fixed;
     width: 100%;
@@ -89,17 +89,18 @@ nav a:hover {
 }
 
 .product-card {
-    background: #fff; /* لون الخلفية أبيض */
-    border-radius: 15px; /* زوايا مستديرة */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
-     padding: 1rem;
-      margin: 0 0.5rem 1rem;
-    text-align: center; /* تمركز النص */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انتقال سلس */
-    position: relative; /* وضع نسبي */
-    overflow: hidden; /* إخفاء المحتوى الزائد */
-    margin-bottom: 1rem; /* هامش أسفل البطاقة */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 0.2rem; /* قلل الحشوة الداخلية */
+    margin: 0 0.5rem 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
 }
+
 
 .product-card:hover {
     transform: translateY(-10px); /* رفع البطاقة للأعلى */
@@ -220,7 +221,6 @@ footer {
 /* قسم الاتصال (Contact Section) */
 .contact-section {
     padding: 1.5rem 0; /* وسادة داخلية */
-    background: #f9f9f9; /* لون الخلفية */
 }
 
 .contact-info {
