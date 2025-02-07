@@ -9,7 +9,7 @@ body {
     line-height: 1.8; /* المسافة بين الأسطر */
     margin: 0; /* هامش خارجي صفر */
     padding: 0; /* وسادة داخلية صفر */
-    background-color: #f1c40f;; /* لون خلفية الصفحة */
+    background-color: #fff;; /* لون خلفية الصفحة */
     color: #333; /* لون النص */
 }
 html {
@@ -105,14 +105,14 @@ nav a:hover {
 .product-card {
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.20);
     padding: 0.2rem; /* قلل الحشوة الداخلية */
     margin: 0 0.5rem 1rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 /* تأثير التفاعل مع الفأرة */
@@ -127,11 +127,9 @@ img:hover {
   border: 4px solid rgba(255, 255, 255, 0.6);  /* خط لامع حول الصورة */
 }
 
-
-
 .product-card:hover {
     transform: translateY(-10px); /* رفع البطاقة للأعلى */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.20); /* زيادة الظل */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* زيادة الظل */
 }
 
 .product-card img {
@@ -179,15 +177,12 @@ img:hover {
 
 /* قسم حول (About Section) */
 .about {
-	  display: flex;
-    flex-direction: column;
     text-align: center; /* تمركز النص */
     padding: 3rem 2rem; /* وسادة داخلية */
     background: #fff; /* لون الخلفية */
     margin: 1.3rem 0; /* هامش حول القسم */
-    border-radius: 15px; /* زوايا مستديرة */
+    border-radius: 0px; /* زوايا مستديرة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
-	font-size: 1.2rem; /* حجم الخط */
 }
 
 .about h2 {
@@ -196,16 +191,6 @@ img:hover {
     margin-bottom: 0.5rem; /* هامش أسفل العنوان */
 }
 
-/* أساليب التذييل (Footer Styles) */
-footer {
-    background: linear-gradient(135deg, #222, #444); /* تدرج أسود إلى رمادي */
-    color: white; /* لون النص */
-    text-align: center; /* تمركز النص */
-    padding: 0.7rem 1rem; /* وسادة داخلية أكبر قليلاً */
-    margin-top: 1rem; /* هامش أعلى أكبر */
-    font-size: 0.9rem; /* حجم الخط */
-    border-top: 2px solid #555; /* خط علوي بلون رمادي فاتح */
-}
 
 
 /* استعلامات الوسائط (Media Queries) */
@@ -230,15 +215,13 @@ footer {
     }
 }
 
-/* عناوين الأقسام */
-.section-title {
-    text-align: center; /* تمركز النص */
-    font-size: 2.5rem; /* حجم الخط */
-    color: var(--secondary-color); /* لون النص */
-    margin: 1rem 0; /* هامش حول العنوان */
-    position: relative; /* وضع نسبي */
-}
-
+ /* استهداف الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .card {
+                width: 100%; /* كل بطاقة تأخذ كامل العرض */
+                margin-bottom: 20px;
+            }
+        }
 .section-title::after {
     content: ''; /* إنشاء خط تحت العنوان */
     width: 140px; /* عرض الخط */
@@ -256,13 +239,13 @@ footer {
 .contact-info {
     text-align: center; /* تمركز النص */
     margin: 0 auto; /* تمركز العنصر */
-    max-width: 1192px; /* العرض الأقصى */
+    max-width: 1200px; /* العرض الأقصى */
 }
 
 .info-card {
     background: #fff; /* لون الخلفية */
     padding: 2rem; /* وسادة داخلية */
-    border-radius: 15px; /* زوايا مستديرة */
+    border-radius: 0px; /* زوايا مستديرة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
 }
  /* تحسين قسم الاتصال */
@@ -270,7 +253,7 @@ footer {
     display: flex; /* تصميم مرنة */
     align-items: center; /* تمركز العمودي */
     justify-content: center; /* تمركز الأفقي */
-     margin-bottom: 0.5rem; /* هامش أسفل العنصر */
+    margin-bottom: 1.5rem; /* هامش أسفل العنصر */
     padding: 1rem; /* وسادة داخلية */
     background: #f9f9f9; /* لون الخلفية */
     border-radius: 10px; /* زوايا مستديرة */
@@ -304,18 +287,18 @@ footer {
 
 /* قسم الأسئلة الشائعة (FAQ Section) */
 .faq-container {
-    max-width: 1160px; /* العرض الأقصى */
+    max-width: 1165px; /* العرض الأقصى */
     margin: auto; /* تمركز العنصر */
     background: white; /* لون الخلفية */
     padding: 15px; /* وسادة داخلية */
-    border-radius: 15px; /* زوايا مستديرة */
+    border-radius: 0px; /* زوايا مستديرة */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل ثلاثي الأبعاد */
 }
 
 .faq-question {
     background: var(--primary-color); /* لون الخلفية */
     color: white; /* لون النص */
-    padding: 10px; /* وسادة داخلية */
+     padding: 10px; /* وسادة داخلية */
     margin: 10px 0; /* هامش حول السؤال */
     cursor: pointer; /* مؤشر النقر */
     border-radius: 15px; /* زوايا مستديرة */
@@ -333,7 +316,7 @@ footer {
 .faq-answer {
     display: none; /* إخفاء الإجابة */
     padding: 10px; /* وسادة داخلية */
-    margin-bottom: 0.5rem; /* هامش أسفل الإجابة */
+     margin-bottom: 1rem;; /* هامش أسفل الإجابة */
     background: #f1f1f1; /* لون الخلفية */
     border-radius: 15px; /* زوايا مستديرة */
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05); /* ظل ثلاثي الأبعاد داخلي */
@@ -409,3 +392,13 @@ h2 {
     display: none;
 }
 
+/* أساليب التذييل (Footer Styles) */
+footer {
+    background: linear-gradient(135deg, #222, #444); /* تدرج أسود إلى رمادي */
+    color: white; /* لون النص */
+    text-align: center; /* تمركز النص */
+    padding: 0.7rem 1rem; /* وسادة داخلية أكبر قليلاً */
+    margin-top: 1rem; /* هامش أعلى أكبر */
+    font-size: 0.9rem; /* حجم الخط */
+    border-top: 2px solid #555; /* خط علوي بلون رمادي فاتح */
+}
