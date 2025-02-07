@@ -185,7 +185,7 @@ img:hover {
     padding: 3rem 2rem; /* وسادة داخلية */
     background: #fff; /* لون الخلفية */
     margin: 1.3rem 0; /* هامش حول القسم */
-    border-radius: 0px; /* زوايا مستديرة */
+    border-radius: 15px; /* زوايا مستديرة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
 	font-size: 1.2rem; /* حجم الخط */
 }
@@ -262,7 +262,7 @@ footer {
 .info-card {
     background: #fff; /* لون الخلفية */
     padding: 2rem; /* وسادة داخلية */
-    border-radius: 0px; /* زوايا مستديرة */
+    border-radius: 15px; /* زوايا مستديرة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ثلاثي الأبعاد */
 }
  /* تحسين قسم الاتصال */
@@ -308,7 +308,7 @@ footer {
     margin: auto; /* تمركز العنصر */
     background: white; /* لون الخلفية */
     padding: 15px; /* وسادة داخلية */
-    border-radius: 0px; /* زوايا مستديرة */
+    border-radius: 15px; /* زوايا مستديرة */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل ثلاثي الأبعاد */
 }
 
