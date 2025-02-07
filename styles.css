@@ -51,7 +51,7 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* الروابط */
+/* الروابط العامة */
 nav a {
     color: white;
     text-decoration: none;
@@ -61,15 +61,19 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     white-space: nowrap; /* يمنع كسر النص داخل الرابط */
+    display: inline-block;
+    box-sizing: border-box;
 }
 /* تصميم الرابط الأول "المتجر" */
 nav a:first-child {
     color: #FFD700; /* أصفر غامق */
-     background: rgba(255, 255, 255, 0.2); /* خلفية شفافة بلون أبيض */
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2); /* خلفية شفافة بلون أبيض */
+    padding: 0.5rem 1rem; /* نفس البادينغ مثل باقي الروابط */
+    border-radius: 5px;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
+    display: inline-block;
+    box-sizing: border-box;
 }
 
 
