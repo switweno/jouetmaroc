@@ -105,7 +105,7 @@ nav a:hover {
 .product-card {
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.20);
     padding: 0.2rem; /* قلل الحشوة الداخلية */
     margin: 0 0.5rem 1rem;
     text-align: center;
@@ -118,13 +118,9 @@ nav a:hover {
 /* تأثير التفاعل مع الفأرة */
 img {
   transition: transform 1.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
-}
-
-img:hover {
-  transform: rotate(3deg);  /* إمالة الصورة بشكل أكبر */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);  /* ظل أسفل الصورة */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);  /* ظل أسفل الصورة */
   filter: brightness(1.2) contrast(1.2);  /* زيادة اللمعان والتباين */
-  border: 4px solid rgba(255, 255, 255, 0.6);  /* خط لامع حول الصورة */
+  border: 2px solid rgba(255, 255, 255, 0.6);  /* خط لامع حول الصورة */
 }
 
 .product-card:hover {

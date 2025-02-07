@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('a[href="#products"]').addEventListener("click", function(event) {
         event.preventDefault(); // منع التمرير الافتراضي
         let target = document.querySelector("#products");
-        let offset = 70; // تغيير المسافة حسب الحاجة
+        let offset = 80; // تغيير المسافة حسب الحاجة
         window.scrollTo({
             top: target.offsetTop - offset,
             behavior: "smooth"
