@@ -65,17 +65,14 @@ nav a {
 /* تصميم الرابط الأول "المتجر" */
 nav a:first-child {
     color: #FFD700; /* أصفر غامق */
-    background: rgba(255, 215, 0, 0.2); /* خلفية شفافة */
+     background: rgba(255, 255, 255, 0.2); /* خلفية شفافة بلون أبيض */
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
 
-/* تأثير عند المرور عليه */
-nav a:first-child:hover {
-    background: rgba(255, 215, 0, 0.4);
-}
+
 /* إبقاء الروابط في المنتصف حتى لو صغرت الشاشة كثيرًا */
 @media (max-width: 300px) {
     nav {
