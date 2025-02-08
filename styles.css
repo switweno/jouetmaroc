@@ -60,7 +60,7 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 800;
     transition: all 0.3s ease;
     padding: 0.5rem 1rem;
@@ -547,7 +547,7 @@ footer {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    width: 220px;
+    width: 180px;
 }
 
 .subscribe-form button {
