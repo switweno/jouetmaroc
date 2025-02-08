@@ -565,7 +565,7 @@ footer {
 }
 
 /* استجابة للشاشات الصغيرة */
-@media (max-width: 480px) {
+@media (max-width: 360px) {
     .subscribe-form {
         flex-direction: column;
     }
