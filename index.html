@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -19,129 +20,97 @@
     </nav>
     
 <header> JOUET MAROC </header>
+
+  <div class="slider-container">
+        <div class="slides">
+            <img src="slide1.jpg" alt="Slide 1">
+            <img src="slide2.jpg" alt="Slide 2">
+            <img src="slide3.jpg" alt="Slide 3">
+            <img src="slide4.jpg" alt="Slide 4">
+        </div>
+
+        <!-- أزرار التحكم -->
+        <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- دوائر التبديل -->
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </div>
+	
 <div class="container">
     <h2 class="section-title" id="products">منتجاتنا</h2>
     <section class="products">
-	
+		
 	<!-- داخل قسم المنتجات في ملف HTML -->
-
-    <!--1 البطاقات الأصلية -->
-    <div class="product-card">
-                <div class="image-slider" data-slider="0">
-    <img src="bike1.jpg" alt="صورة 1" class="active">
-    <img src="bike2.jpg" alt="صورة 2">
-    <img src="bike3.jpg" alt="صورة 3">
-	<img src="bike5.jpg" alt="4ورة 3">
-</div>
-<div class="slider-buttons" data-slider="0">
-    <button onclick="changeImage(this, 0)" data-slider="0">PHOTO 3</button>
-    <button onclick="changeImage(this, 1)" data-slider="0">PHOTO 2</button>
-    <button onclick="changeImage(this, 2)" data-slider="0">PHOTO 1</button>
-	<button onclick="changeImage(this, 3)" data-slider="0">PHOTO 0</button>
-</div>
-                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT</h2>
-                <p class="product-price">8199 درهم</p>
-				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-    <span><i class="fas fa-tachometer-alt"></i> سرعة 42km/h</span>
-                <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-
-
-            </div>
-	 <!--2 البطاقات الأصلية -->
-	
-    <div class="product-card">
-                <div class="image-slider" data-slider="1">
-    <img src="bike4.jpg" alt="صورة 1" class="active">
-    <img src="bike5.jpg" alt="صورة 2">
-    <img src="bike6.jpg" alt="صورة 3">
-</div>
-<div class="slider-buttons" data-slider="1">
-    <button onclick="changeImage(this, 0)" data-slider="1">PHOTO 1</button>
-    <button onclick="changeImage(this, 1)" data-slider="1">PHOTO 2</button>
-    <button onclick="changeImage(this, 2)" data-slider="1">PHOTO 3</button>
-</div>
-                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11</h2>
-                <p class="product-price">8,699 درهم</p>
-				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-    <span><i class="fas fa-tachometer-alt"></i> سرعة 51km/h</span>
-               <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-            </div>
- <!--3 البطاقات الأصلية -->
-
+<!-- 1 البطاقات الأصلية -->
 <div class="product-card">
-                <div class="image-slider" data-slider="2">
-    <img src="bike7.jpg" alt="صورة 1" class="active">
-    <img src="bike8.jpg" alt="صورة 2">
-    <img src="bike9.jpg" alt="صورة 3">
+    <div class="image-slider" data-slider="0">
+        <img src="bike1.jpg" alt="صورة 1" class="active">
+        <img src="bike2.jpg" alt="صورة 2">
+        <img src="bike3.jpg" alt="صورة 3">
+        <img src="bike4.jpg" alt="صورة 4">
+    </div>
+    <div class="slider-buttons" data-slider="0">
+        <button onclick="changeImage(this, 0)" data-slider="0">PHOTO 1</button>
+        <button onclick="changeImage(this, 1)" data-slider="0">PHOTO 2</button>
+        <button onclick="changeImage(this, 2)" data-slider="0">PHOTO 3</button>
+        <button onclick="changeImage(this, 3)" data-slider="0">PHOTO 4</button>
+    </div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT</h2>
+    <p class="product-price">8,199 درهم</p>
+    <div class="product-description">
+        <p>وصف المنتج: دراجة كهربائية متينة ومجهزة للتضاريس الوعرة، مع تصميم رياضي وأداء قوي.</p>
+    </div>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
 </div>
-<div class="slider-buttons" data-slider="2">
-    <button onclick="changeImage(this, 0)" data-slider="2">PHOTO 1</button>
-    <button onclick="changeImage(this, 1)" data-slider="2">PHOTO 2</button>
-    <button onclick="changeImage(this, 2)" data-slider="2">PHOTO 3</button>
-</div>
-                <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE</h2>
-                <p class="product-price">7,199 درهم</p>
-				<span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-    <span><i class="fas fa-tachometer-alt"></i> سرعة 50km/h</span>
-                <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-            </div>
 
- <!--4 البطاقات الأصلية -->
+<!-- 2 البطاقات الأصلية -->
+<div class="product-card">
+    <div class="image-slider" data-slider="1">
+        <img src="bike5.jpg" alt="صورة 1" class="active">
+        <img src="bike6.jpg" alt="صورة 2">
+        <img src="bike7.jpg" alt="صورة 3">
+        <img src="bike8.jpg" alt="صورة 4">
+    </div>
+    <div class="slider-buttons" data-slider="1">
+        <button onclick="changeImage(this, 0)" data-slider="1">PHOTO 1</button>
+        <button onclick="changeImage(this, 1)" data-slider="1">PHOTO 2</button>
+        <button onclick="changeImage(this, 2)" data-slider="1">PHOTO 3</button>
+        <button onclick="changeImage(this, 3)" data-slider="1">PHOTO 4</button>
+    </div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11</h2>
+    <p class="product-price">8,699 درهم</p>
+    <div class="product-description">
+   <p>وصف المنتج: دراجة كهربائية حديثة تجمع بين الأداء العالي والمظهر الكلاسيكي، مناسبة ائية حديثة تجمع بين الأداء العالي والمظهر الكلاسيكي، مناسبةلجميع الأعمار.</p>
+</div>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11', 'https://switweno.github.io/jouetmaroc/bike5.jpg')">🛒 اطلب عبر واتساب</button>
+</div>
 
- <div class="product-card">
-    <div class="image-slider" data-slider="3">
-<img src="bike10.jpg" alt="صورة 1" class="active">
-<img src="bike11.jpg" alt="صورة 2">
-<img src="bike12.jpg" alt="صورة 3">
-</div>
-<div class="slider-buttons" data-slider="3">
-<button onclick="changeImage(this, 0)" data-slider="3">PHOTO 1</button>
-<button onclick="changeImage(this, 1)" data-slider="3">PHOTO 2</button>
-<button onclick="changeImage(this, 2)" data-slider="3">PHOTO 3</button>
-</div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE S</h2>
+<!-- 3 البطاقات الأصلية -->
+<div class="product-card">
+    <div class="image-slider" data-slider="2">
+        <img src="bike9.jpg" alt="صورة 1" class="active">
+        <img src="bike10.jpg" alt="صورة 2">
+        <img src="bike11.jpg" alt="صورة 3">
+        <img src="bike12.jpg" alt="صورة 4">
+    </div>
+    <div class="slider-buttons" data-slider="2">
+        <button onclick="changeImage(this, 0)" data-slider="2">PHOTO 1</button>
+        <button onclick="changeImage(this, 1)" data-slider="2">PHOTO 2</button>
+        <button onclick="changeImage(this, 2)" data-slider="2">PHOTO 3</button>
+        <button onclick="changeImage(this, 3)" data-slider="2">PHOTO 4</button>
+    </div>
+    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE</h2>
     <p class="product-price">7,199 درهم</p>
-    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-</div>
- <!--5 البطاقات الأصلية -->
-
-<div class="product-card">
-    <div class="image-slider" data-slider="4">
-<img src="bike13.jpg" alt="صورة 1" class="active">
-<img src="bike14.jpg" alt="صورة 2">
-<img src="bike15.jpg" alt="صورة 3">
-</div>
-<div class="slider-buttons" data-slider="4">
-<button onclick="changeImage(this, 0)" data-slider="4">PHOTO 1</button>
-<button onclick="changeImage(this, 1)" data-slider="4">PHOTO 2</button>
-<button onclick="changeImage(this, 2)" data-slider="4">PHOTO 3</button>
-</div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE 2025</h2>
-    <p class="product-price">5,499 درهم</p>
-    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-</div>
- <!--6 البطاقات الأصلية -->
-
-<div class="product-card">
-    <div class="image-slider" data-slider="4">
-<img src="bike13.jpg" alt="صورة 1" class="active">
-<img src="bike14.jpg" alt="صورة 2">
-<img src="bike15.jpg" alt="صورة 3">
-</div>
-<div class="slider-buttons" data-slider="4">
-<button onclick="changeImage(this, 0)" data-slider="4">PHOTO 1</button>
-<button onclick="changeImage(this, 1)" data-slider="4">PHOTO 2</button>
-<button onclick="changeImage(this, 2)" data-slider="4">PHOTO 3</button>
-</div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE 2025</h2>
-    <p class="product-price">5,499 درهم</p>
-    <span><i class="fas fa-battery-full"></i> بطارية 48V</span>
-<span><i class="fas fa-tachometer-alt"></i> سرعة 38km/h</span>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
+    <div class="product-description">
+        <p>وصف المنتج: تصميم أنيق وخفيف الوزن، مثالي للتنقل اليومي في المدينة.</p>
+    </div>
+    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE SHINE', 'https://switweno.github.io/jouetmaroc/bike9.jpg')">🛒 اطلب عبر واتساب</button>
 </div>
 </section>
  </div>
@@ -150,7 +119,7 @@
  <div class="container">
         <section id="about" class="about">
             <h2 class="section-title">من نحن</h2>
-            <p>نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.</p>
+            <p>نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.</p>
         </section>
         </div>
     <div class="faq-container">
@@ -198,9 +167,22 @@
     </div>
 </section>
 
+ 
+
 <footer>
-    <p>© 2025 JOUET MAROC </p>
+    <p>! استمتع بأفضل العروض</p>
+    <p>ابقَ على اطلاع بالعروض الحصرية. بدون رسائل مزعجة. اشترك الآن</p>
     
+    <form class="subscribe-form">
+        <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+        <button type="submit">اشترك</button>
+    </form>
+
+    <p>contact@jouetmaroc.com</p>
+    <p>© 2025. جميع الحقوق محفوظة</p>
 </footer>
- <script src="script.js"></script></body>
+
+ <script src="script.js"></script>
+ 
+ </body>
 </html>
