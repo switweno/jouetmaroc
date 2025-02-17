@@ -3,186 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOUET MAROC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/switweno/jouetmaroc/main/bike-icon.png">
-    <link rel="stylesheet" href="styles.css">
-    
+    <title>مشغل الموسيقى الاحترافي</title>
+    <style>
+        /* إعادة تصميم عام */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: #ff4d4d; /* لون واحد مميز */
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-item {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .navbar-item img {
+            width: 80px; /* حجم ثابت للصور في Navbar */
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .navbar-item:hover img {
+            transform: scale(1.1);
+        }
+        .navbar-item span {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* زر التشغيل العشوائي */
+        .random-button {
+            background: #ffffff;
+            color: #ff4d4d;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .random-button:hover {
+            background: #ff1a1a;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* الأغاني */
+        .songs-container-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .songs-container {
+            display: flex;
+            overflow-x: auto; /* إضافة شريط تمرير أفقي */
+            gap: 20px;
+            scroll-behavior: smooth; /* تمرير سلس */
+            padding: 0 20px;
+            margin-bottom: 120px; /* هوامش إضافية لتجنب التداخل مع القارئ */
+        }
+        .songs-container::-webkit-scrollbar {
+            height: 8px; /* ارتفاع شريط التمرير */
+        }
+        .songs-container::-webkit-scrollbar-thumb {
+            background: #ff4d4d; /* لون شريط التمرير */
+            border-radius: 10px;
+        }
+        .songs-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1); /* خلفية شريط التمرير */
+        }
+        .song {
+            flex: 0 0 auto; /* منع التوسع التلقائي */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            min-width: 150px; /* عرض ثابت لكل أغنية */
+        }
+        .song:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .song img {
+            width: 100px; /* حجم ثابت للصور داخل الأغاني */
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .song-title {
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* القارئ دائمًا في الأسفل */
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px; /* جعل القارئ أصغر قليلاً */
+            background: rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000; /* ضمان ظهور القارئ فوق جميع العناصر */
+        }
+        .track-info {
+            font-size: 16px; /* جعل النص أصغر قليلاً */
+            margin-top: 10px;
+            color: #ffcc00;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تأثير الألوان الديناميكية */
+        .visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px; /* جعل التأثير أصغر قليلاً */
+            margin-top: 10px;
+        }
+        .bar {
+            width: 8px;
+            height: 8px;
+            background: #ff4d4d;
+            margin: 0 4px;
+            animation: dance 1s infinite alternate;
+        }
+        .bar:nth-child(1) { animation-delay: 0.1s; background: #ff4d4d; }
+        .bar:nth-child(2) { animation-delay: 0.2s; background: #ff7f50; }
+        .bar:nth-child(3) { animation-delay: 0.3s; background: #ffa500; }
+        .bar:nth-child(4) { animation-delay: 0.4s; background: #ffff00; }
+        .bar:nth-child(5) { animation-delay: 0.5s; background: #90ee90; }
+        .bar:nth-child(6) { animation-delay: 0.6s; background: #00bfff; }
+        .bar:nth-child(7) { animation-delay: 0.7s; background: #8a2be2; }
+        @keyframes dance {
+            0% {
+                height: 8px;
+            }
+            100% {
+                height: 40px; /* جعل الحد الأقصى للارتفاع أصغر قليلاً */
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="#">المتجر</a>
-        <a href="#products">المنتجات</a>
-        <a href="#about">من نحن</a>
-        <a href="#contact">اتصل بنا</a>
-    </nav>
-    
-<header> JOUET MAROC </header>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-item" onclick="showAlbum('popular')">
+            <img src="chaabi.jpg" alt="شعبية">
+            <span>شعبية</span>
+        </div>
+        <div class="navbar-item" onclick="showAlbum('amazigh')">
+            <img src="amazigh.jpg" alt="أمازيغية">
+            <span>أمازيغية</span>
+        </div>
+        <div class="navbar-item" onclick="showAlbum('eastern')">
+            <img src="char9i.jpeg" alt="شرقية">
+            <span>شرقية</span>
+        </div>
+        <button class="random-button" onclick="playRandomSong()">تشغيل عشوائي</button>
+    </div>
 
-  <div class="slider-container">
-        <div class="slides">
-            <img src="slide1.jpg" alt="Slide 1">
-            <img src="slide2.jpg" alt="Slide 2">
-            <img src="slide3.jpg" alt="Slide 3">
-            <img src="slide4.jpg" alt="Slide 4">
-        </div>
-
-        <!-- أزرار التحكم -->
-        <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
-
-        <!-- دوائر التبديل -->
-        <div class="dots">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-        </div>
-    </div>
-	
-<div class="container">
-    <h2 class="section-title" id="products">منتجاتنا</h2>
-    <section class="products">
-		
-	<!-- داخل قسم المنتجات في ملف HTML -->
-<!-- 1 البطاقات الأصلية -->
-<div class="product-card">
-    <div class="image-slider" data-slider="0">
-        <img src="bike1.jpg" alt="صورة 1" class="active">
-        <img src="bike2.jpg" alt="صورة 2">
-        <img src="bike3.jpg" alt="صورة 3">
-        <img src="bike4.jpg" alt="صورة 4">
-    </div>
-    <div class="slider-buttons" data-slider="0">
-        <button onclick="changeImage(this, 0)" data-slider="0">PHOTO 1</button>
-        <button onclick="changeImage(this, 1)" data-slider="0">PHOTO 2</button>
-        <button onclick="changeImage(this, 2)" data-slider="0">PHOTO 3</button>
-        <button onclick="changeImage(this, 3)" data-slider="0">PHOTO 4</button>
-    </div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT</h2>
-    <p class="product-price">8,199 درهم</p>
-    <div class="product-description">
-        <p>وصف المنتج: دراجة كهربائية متينة ومجهزة للتضاريس الوعرة، مع تصميم رياضي وأداء قوي.</p>
-    </div>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE LANDER VTT', 'https://switweno.github.io/jouetmaroc/bike1.jpg')">🛒 اطلب عبر واتساب</button>
-</div>
-
-<!-- 2 البطاقات الأصلية -->
-<div class="product-card">
-    <div class="image-slider" data-slider="1">
-        <img src="bike5.jpg" alt="صورة 1" class="active">
-        <img src="bike6.jpg" alt="صورة 2">
-        <img src="bike7.jpg" alt="صورة 3">
-        <img src="bike8.jpg" alt="صورة 4">
-    </div>
-    <div class="slider-buttons" data-slider="1">
-        <button onclick="changeImage(this, 0)" data-slider="1">PHOTO 1</button>
-        <button onclick="changeImage(this, 1)" data-slider="1">PHOTO 2</button>
-        <button onclick="changeImage(this, 2)" data-slider="1">PHOTO 3</button>
-        <button onclick="changeImage(this, 3)" data-slider="1">PHOTO 4</button>
-    </div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11</h2>
-    <p class="product-price">8,699 درهم</p>
-    <div class="product-description">
-   <p>وصف المنتج: دراجة كهربائية حديثة تجمع بين الأداء العالي والمظهر الكلاسيكي، مناسبة ائية حديثة تجمع بين الأداء العالي والمظهر الكلاسيكي، مناسبةلجميع الأعمار.</p>
-</div>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE HARLEY U11', 'https://switweno.github.io/jouetmaroc/bike5.jpg')">🛒 اطلب عبر واتساب</button>
-</div>
-
-<!-- 3 البطاقات الأصلية -->
-<div class="product-card">
-    <div class="image-slider" data-slider="2">
-        <img src="bike9.jpg" alt="صورة 1" class="active">
-        <img src="bike10.jpg" alt="صورة 2">
-        <img src="bike11.jpg" alt="صورة 3">
-        <img src="bike12.jpg" alt="صورة 4">
-    </div>
-    <div class="slider-buttons" data-slider="2">
-        <button onclick="changeImage(this, 0)" data-slider="2">PHOTO 1</button>
-        <button onclick="changeImage(this, 1)" data-slider="2">PHOTO 2</button>
-        <button onclick="changeImage(this, 2)" data-slider="2">PHOTO 3</button>
-        <button onclick="changeImage(this, 3)" data-slider="2">PHOTO 4</button>
-    </div>
-    <h2 class="product-title">VÉLO ÉLECTRIQUE LIKEBIKE SHINE</h2>
-    <p class="product-price">7,199 درهم</p>
-    <div class="product-description">
-        <p>وصف المنتج: تصميم أنيق وخفيف الوزن، مثالي للتنقل اليومي في المدينة.</p>
-    </div>
-    <button class="buy-btn" onclick="orderNow('VÉLO ÉLECTRIQUE LIKEBIKE SHINE', 'https://switweno.github.io/jouetmaroc/bike9.jpg')">🛒 اطلب عبر واتساب</button>
-</div>
-</section>
- </div>
- <!--2 البطاقات الأصلية الميزد من-->
-
- <div class="container">
-        <section id="about" class="about">
-            <h2 class="section-title">من نحن</h2>
-            <p>نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.نحن متجر متخصص في توفير أحدث الدراجات الكهربائية بمواصفات عالمية. نلتزم بمعايير الجودة العالية ونقدم ضمانًا لمدة عامين على جميع منتجاتنا.</p>
-        </section>
-        </div>
-    <div class="faq-container">
-        <h2>الأسئلة الشائعة</h2>
-        <div class="faq-item">
-            <div class="faq-question">📦 هل التوصيل مجاني لجميع المدن؟</div>
-            <div class="faq-answer">نعم، نوفر التوصيل المجاني لجميع المدن بدون أي تكاليف إضافية.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">⏳ كم يستغرق وقت التوصيل؟</div>
-            <div class="faq-answer">عادةً ما يستغرق التوصيل من 2 إلى 5 أيام عمل حسب موقعك.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">💳 ما هي طرق الدفع المتاحة؟</div>
-            <div class="faq-answer">نقبل الدفع عند الاستلام، التحويل البنكي، والدفع الإلكتروني.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">🔄 هل يمكنني إرجاع المنتج إذا لم يعجبني؟</div>
-            <div class="faq-answer">نعم، يمكنك إرجاع المنتج خلال 7 أيام بشرط أن يكون في حالته الأصلية.</div>
-        </div>
-    </div>
-       <section id="contact" class="contact-section">
-        
-    <div class="contact-info">
-        <div class="info-card">
-            <h3>معلومات التواصل</h3>
-            <div class="info-item">
-                <i class="fas fa-phone"></i>
-                <p>0762609147</p>
+    <!-- الأغاني -->
+    <div class="songs-container-wrapper">
+        <div class="songs-container" id="popular-songs" style="display: none;">
+            <div class="song" onclick="changeTrack('chaabi1.mp3', 'أغنية شعبية 1')">
+                <img src="chaabi.jpg" alt="أغنية شعبية 1">
+                <div class="song-title">أغنية شعبية 1</div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <p>info@e-bike.com</p>
+            <div class="song" onclick="changeTrack('chaabi2.mp3', 'أغنية شعبية 2')">
+                <img src="chaabi.jpg" alt="أغنية شعبية 2">
+                <div class="song-title">أغنية شعبية 2</div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p>الدار البيضاء_رياض الولفة</p>
+            <div class="song" onclick="changeTrack('chaabi3.mp3', 'أغنية شعبية 3')">
+                <img src="chaabi.jpg" alt="أغنية شعبية 3">
+                <div class="song-title">أغنية شعبية 3</div>
             </div>
-            <div class="social-links">
-                <a href="https://wa.me/212762609147"><i class="fab fa-whatsapp"></i></a>
-              
-                <a href="https://www.facebook.com/jouetmaroc2/"><i class="fab fa-facebook"></i></a>
+            <div class="song" onclick="changeTrack('chaabi4.mp3', 'أغنية شعبية 4')">
+                <img src="chaabi.jpg" alt="أغنية شعبية 4">
+                <div class="song-title">أغنية شعبية 4</div>
+            </div>
+        </div>
+
+        <div class="songs-container" id="amazigh-songs" style="display: none;">
+            <div class="song" onclick="changeTrack('amazigh1.mp3', 'أغنية أمازيغية 1')">
+                <img src="amazigh.jpg" alt="أغنية أمازيغية 1">
+                <div class="song-title">أغنية أمازيغية 1</div>
+            </div>
+            <div class="song" onclick="changeTrack('amazigh2.mp3', 'أغنية أمازيغية 2')">
+                <img src="amazigh.jpg" alt="أغنية أمازيغية 2">
+                <div class="song-title">أغنية أمازيغية 2</div>
+            </div>
+            <div class="song" onclick="changeTrack('amazigh3.mp3', 'أغنية أمازيغية 3')">
+                <img src="amazigh.jpg" alt="أغنية أمازيغية 3">
+                <div class="song-title">أغنية أمازيغية 3</div>
+            </div>
+            <div class="song" onclick="changeTrack('amazigh4.mp3', 'أغنية أمازيغية 4')">
+                <img src="amazigh.jpg" alt="أغنية أمازيغية 4">
+                <div class="song-title">أغنية أمازيغية 4</div>
+            </div>
+        </div>
+
+        <div class="songs-container" id="eastern-songs" style="display: none;">
+            <div class="song" onclick="changeTrack('eastern1.mp3', 'أغنية شرقية 1')">
+                <img src="char9i.jpeg" alt="أغنية شرقية 1">
+                <div class="song-title">أغنية شرقية 1</div>
+            </div>
+			    
+            <div class="song" onclick="changeTrack('eastern2.mp3', 'أغنية شرقية 2')">
+                <img src="char9i.jpeg" alt="أغنية شرقية 2">
+                <div class="song-title">أغنية شرقية 2</div>
+            </div>
+            <div class="song" onclick="changeTrack('eastern3.mp3', 'أغنية شرقية 3')">
+                <img src="char9i.jpeg" alt="أغنية شرقية 3">
+                <div class="song-title">أغنية شرقية 3</div>
             </div>
         </div>
     </div>
-</section>
 
- 
+    <!-- القارئ دائمًا في الأسفل -->
+    <div class="player">
+        <h2 id="album-title">اختر أغنية</h2>
+        <div class="track-info" id="track-name">لم يتم اختيار أغنية</div>
+        <audio controls id="audio-player">
+            <source src="" id="audio-source">
+            المتصفح لا يدعم تشغيل الصوت.
+        </audio>
+        <div class="visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
 
-<footer>
-    <p>! استمتع بأفضل العروض</p>
-    <p>ابقَ على اطلاع بالعروض الحصرية. اشترك الآن</p>
-    
-    <form class="subscribe-form">
-        <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
-        <button type="submit">اشترك</button>
-    </form>
+    <script>
+        // قائمة الأغاني
+        const songs = [
+            { file: 'chaabi1.mp3', name: 'أغنية شعبية 1' },
+            { file: 'chaabi2.mp3', name: 'أغنية شعبية 2' },
+            { file: 'chaabi3.mp3', name: 'أغنية شعبية 3' },
+            { file: 'chaabi4.mp3', name: 'أغنية شعبية 4' },
+            { file: 'amazigh1.mp3', name: 'أغنية أمازيغية 1' },
+            { file: 'amazigh2.mp3', name: 'أغنية أمازيغية 2' },
+            { file: 'amazigh3.mp3', name: 'أغنية أمازيغية 3' },
+            { file: 'amazigh4.mp3', name: 'أغنية أمازيغية 4' },
+            { file: 'eastern1.mp3', name: 'أغنية شرقية 1' },
+            { file: 'eastern2.mp3', name: 'أغنية شرقية 2' },
+            { file: 'eastern3.mp3', name: 'أغنية شرقية 3' }
+        ];
 
-    <p>contact@jouetmaroc.com</p>
-    <p>© 2025. جميع الحقوق محفوظة</p>
-</footer>
+        let isRandomPlaying = false;
 
- <script src="script.js"></script>
- 
- </body>
+        function showAlbum(album) {
+            // إخفاء جميع الألبومات
+            const albums = document.querySelectorAll('.songs-container');
+            albums.forEach(album => album.style.display = 'none');
+
+            // عرض الألبوم المحدد
+            if (album === 'popular') {
+                document.getElementById("popular-songs").style.display = 'flex';
+            } else if (album === 'amazigh') {
+                document.getElementById("amazigh-songs").style.display = 'flex';
+            } else if (album === 'eastern') {
+                document.getElementById("eastern-songs").style.display = 'flex';
+            }
+        }
+
+        function changeTrack(audioFile, trackName) {
+            if (isRandomPlaying) {
+                document.getElementById("audio-player").pause();
+                isRandomPlaying = false;
+            }
+            document.getElementById("track-name").textContent = trackName;
+            document.getElementById("audio-source").src = audioFile;
+            document.getElementById("audio-player").load();
+            document.getElementById("audio-player").play();
+        }
+
+        function playRandomSong() {
+            const randomIndex = Math.floor(Math.random() * songs.length);
+            const randomSong = songs[randomIndex];
+            changeTrack(randomSong.file, randomSong.name);
+            isRandomPlaying = true;
+        }
+
+        // تشغيل أغنية عشوائية عند بدء الموقع
+        window.onload = function () {
+            playRandomSong(); // تشغيل أغنية عشوائية تلقائيًا
+        };
+
+        // وظيفة السحب باستخدام الفأرة
+        let isDragging = false;
+        let startX, scrollLeft;
+
+        const slider = document.querySelector('.songs-container');
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // مقدار السحب
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
 </html>
