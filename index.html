@@ -62,8 +62,8 @@
 
         /* زر التشغيل العشوائي */
         .random-button {
-            background: #2F274C;
-            color: #F5F4FA;
+            background: #ee909000;
+            color: #795548;
             font-size: 16px;
             font-weight: bold;
             padding: 10px 20px;
@@ -135,7 +135,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 		 .song-selector {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             text-align: center;
             
@@ -217,7 +217,12 @@
             <img src="char9i.jpeg" alt="شرقية">
             <span>شرقية</span>
         </div>
-        <button class="random-button" onclick="playRandomSong()">تشغيل عشوائي</button>
+		<div class="navbar-item" onclick="showAlbum('eastern')">
+            <img src="image1s.jpeg" alt="شرقية">
+            <span>شرقية</span>
+        </div>
+        <button class="random-button" onclick="playRandomSong()">🎵 عشوائي</button>
+
     </div>
 <div class="song-selector">اختر أغنية</div>
     <!-- الأغاني -->
@@ -274,6 +279,21 @@
                 <div class="song-title">أغنية شرقية 3</div>
             </div>
         </div>
+		
+		<div class="songs-container" id="eastern-songs" style="display: none;">
+            <div class="song" onclick="changeTrack('LOOP16.mp3', 'أغنية مغربية 1')">
+                
+                <div class="song-title">أغنية مغربية 1</div>
+            </div>
+            <div class="song" onclick="changeTrack('LOOP20.mp3', 'أغنية مغربية 2')">
+                
+                <div class="song-title">أغنية مغربية 2</div>
+            </div>
+            <div class="song" onclick="changeTrack('LOOP21.mp3', 'أغنية مغربية 3')">
+                
+                <div class="song-title">أغنية مغربية 3</div>
+            </div>
+        </div>
     </div>
 
     <!-- القارئ دائمًا في الأسفل -->
@@ -308,7 +328,10 @@
             { file: 'amazigh4.mp3', name: 'أغنية أمازيغية 4' },
             { file: 'eastern1.mp3', name: 'أغنية شرقية 1' },
             { file: 'eastern2.mp3', name: 'أغنية شرقية 2' },
-            { file: 'eastern3.mp3', name: 'أغنية شرقية 3' }
+            { file: 'eastern3.mp3', name: 'أغنية شرقية 3' },
+			{ file: 'LOOP16.mp3', name: 'أغنية مغربية 1' },
+            { file: 'LOOP20.mp3', name: 'أغنية مغربية 2' },
+            { file: 'LOOP21.mp3', name: 'أغنية مغربية 3' }
         ];
 
         let isRandomPlaying = false;
