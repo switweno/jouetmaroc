@@ -10,369 +10,273 @@
     <title>مشغل الموسيقى الاحترافي</title>
     <style>
         /* إعادة تصميم عام */
-        body {
-            font-family: 'Cairo', Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        h1 {
-            font-size: 36px;
-            margin-top: 20px;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
+        /* تصميم عام */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background: linear-gradient(135deg, #ff4d4d, #ffcc00, #4db8ff); /* لون واحد مميز */
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .navbar-item {
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .navbar-item img {
-            width: 80px; /* حجم ثابت للصور في Navbar */
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .navbar-item:hover img {
-            transform: scale(1.1);
-        }
-        .navbar-item span {
-            display: block;
-            margin-top: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
+.album-list {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
 
-        /* زر التشغيل العشوائي */
-        .random-button {
-            background: #ee909000;
-            color: #795548;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .random-button:hover {
-            background: #2B2A41;
-            color: white;
-            transform: scale(1.1);
-        }
+.album-list button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+}
 
-        /* الأغاني */
-        .songs-container-wrapper {
-            position: relative;
-            overflow: hidden;
-            margin: 30px auto;
-            padding: 0 20px;
-            max-height: 50vh; /* ارتفاع محدود للقائمة */
-            overflow-y: auto; /* تمرير عمودي */
-        }
-        .songs-container-wrapper::-webkit-scrollbar {
-            width: 12px; /* عرض شريط التمرير */
-        }
-        .songs-container-wrapper::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1); /* خلفية شريط التمرير */
-            border-radius: 10px;
-        }
-        .songs-container-wrapper::-webkit-scrollbar-thumb {
-            background: #ff4d4d; /* لون شريط التمرير */
-            border-radius: 10px;
-            border: 3px solid rgba(255, 255, 255, 0.2); /* حدود شريط التمرير */
-        }
-        .songs-container-wrapper::-webkit-scrollbar-thumb:hover {
-            background: #ff1a1a; /* لون عند التحويم */
-        }
-        .songs-container {
-            display: flex;
-            flex-direction: column; /* عرض الأغاني عموديًا */
-            gap: 20px;
-            padding: 20px;
-        }
-        .song {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .song:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-        .song img {
-            width: 100px; /* حجم ثابت للصور داخل الأغاني */
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        .song-title {
-            font-size: 16px;
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-		 .song-selector {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+.album-list button:hover {
+    background-color: #0056b3;
+}
 
-        /* القارئ دائمًا في الأسفل */
-        .player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px; /* جعل القارئ أصغر قليلاً */
-            background: rgba(255, 255, 255, 0.1);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            z-index: 1000; /* ضمان ظهور القارئ فوق جميع العناصر */
-        }
-        .track-info {
-            font-size: 16px; /* جعل النص أصغر قليلاً */
-            margin-top: 10px;
-            color: #ffcc00;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        audio {
-            width: 100%;
-            margin-top: 10px;
-            border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+#audio-player-container {
+    text-align: center;
+    margin: 20px;
+}
 
-        /* تأثير الألوان الديناميكية */
-        .visualizer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 30px; /* جعل التأثير أصغر قليلاً */
-            margin-top: 10px;
-        }
-        .bar {
-            width: 8px;
-            height: 8px;
-            background: #ff4d4d;
-            margin: 0 4px;
-            animation: dance 1s infinite alternate;
-        }
-        .bar:nth-child(1) { animation-delay: 0.1s; background: #ff4d4d; }
-        .bar:nth-child(2) { animation-delay: 0.2s; background: #ff7f50; }
-        .bar:nth-child(3) { animation-delay: 0.3s; background: #ffa500; }
-        .bar:nth-child(4) { animation-delay: 0.4s; background: #ffff00; }
-        .bar:nth-child(5) { animation-delay: 0.5s; background: #90ee90; }
-        .bar:nth-child(6) { animation-delay: 0.6s; background: #00bfff; }
-        .bar:nth-child(7) { animation-delay: 0.7s; background: #8a2be2; }
-        @keyframes dance {
-            0% {
-                height: 8px;
-            }
-            100% {
-                height: 40px; /* جعل الحد الأقصى للارتفاع أصغر قليلاً */
-            }
-        }
+.songs-container {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.song {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.song:hover {
+    background-color: #e0e0e0;
+}
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="navbar-item" onclick="showAlbum('popular')">
-            <img src="chaabi.jpg" alt="شعبية">
-            <span>شعبية</span>
-        </div>
-        <div class="navbar-item" onclick="showAlbum('amazigh')">
-            <img src="amazigh.jpg" alt="أمازيغية">
-            <span>أمازيغية</span>
-        </div>
-        <div class="navbar-item" onclick="showAlbum('eastern')">
-            <img src="char9i.jpeg" alt="شرقية">
-            <span>شرقية</span>
-        </div>
-		<div class="navbar-item" onclick="showAlbum('eastern')">
-            <img src="image1s.jpeg" alt="شرقية">
-            <span>شرقية</span>
-        </div>
-        <button class="random-button" onclick="playRandomSong()">🎵 عشوائي</button>
+    <!-- قائمة الألبومات -->
+<div class="album-list">
+    <button onclick="showAlbum('popular')">أغاني شعبية</button>
+    <button onclick="showAlbum('amazigh')">أغاني أمازيغية</button>
+    <button onclick="showAlbum('eastern')">أغاني شرقية</button>
+    <button onclick="showAlbum('moroccan')">أغاني مغربية</button>
+</div>
 
-    </div>
-<div class="song-selector">اختر أغنية</div>
-    <!-- الأغاني -->
-    <div class="songs-container-wrapper">
-        <div class="songs-container" id="popular-songs" style="display: none;">
-            <div class="song" onclick="changeTrack('chaabi1.mp3', 'أغنية شعبية 1')">
-                
-                <div class="song-title">أغنية شعبية 1</div>
-            </div>
-            <div class="song" onclick="changeTrack('chaabi2.mp3', 'أغنية شعبية 2')">
-                
-                <div class="song-title">أغنية شعبية 2</div>
-            </div>
-            <div class="song" onclick="changeTrack('chaabi3.mp3', 'أغنية شعبية 3')">
-                
-                <div class="song-title">أغنية شعبية 3</div>
-            </div>
-            <div class="song" onclick="changeTrack('chaabi4.mp3', 'أغنية شعبية 4')">
-                
-                <div class="song-title">أغنية شعبية 4</div>
-            </div>
-        </div>
+<!-- مشغل الصوت -->
+<div id="audio-player-container">
+    <h3>مشغل الموسيقى</h3>
+    <audio id="audio-player" controls>
+        <source id="audio-source" src="" type="audio/mpeg">
+        المتصفح لا يدعم تشغيل الصوت.
+    </audio>
+    <p id="track-name">لم يتم اختيار أغنية</p>
+    <button onclick="playPrevious()">السابق</button>
+    <button onclick="playRandomSong()">تشغيل عشوائي</button>
+    <button onclick="playNext()">التالي</button>
+</div>
 
-        <div class="songs-container" id="amazigh-songs" style="display: none;">
-            <div class="song" onclick="changeTrack('amazigh1.mp3', 'أغنية أمازيغية 1')">
-                
-                <div class="song-title">أغنية أمازيغية 1</div>
-            </div>
-            <div class="song" onclick="changeTrack('amazigh2.mp3', 'أغنية أمازيغية 2')">
-                
-                <div class="song-title">أغنية أمازيغية 2</div>
-            </div>
-            <div class="song" onclick="changeTrack('amazigh3.mp3', 'أغنية أمازيغية 3')">
-                
-                <div class="song-title">أغنية أمازيغية 3</div>
-            </div>
-            <div class="song" onclick="changeTrack('amazigh4.mp3', 'أغنية أمازيغية 4')">
-                
-                <div class="song-title">أغنية أمازيغية 4</div>
-            </div>
+<!-- قسم الأغاني -->
+<div class="songs-container-wrapper">
+    <!-- الشعبية -->
+    <div class="songs-container" id="popular-songs" style="display: none;">
+        <div class="song" onclick="changeTrack('chaabi1.mp3', 'أغنية شعبية 1')">
+            <div class="song-title">أغنية شعبية 1</div>
         </div>
-
-        <div class="songs-container" id="eastern-songs" style="display: none;">
-            <div class="song" onclick="changeTrack('eastern1.mp3', 'أغنية شرقية 1')">
-                
-                <div class="song-title">أغنية شرقية 1</div>
-            </div>
-            <div class="song" onclick="changeTrack('eastern2.mp3', 'أغنية شرقية 2')">
-                
-                <div class="song-title">أغنية شرقية 2</div>
-            </div>
-            <div class="song" onclick="changeTrack('eastern3.mp3', 'أغنية شرقية 3')">
-                
-                <div class="song-title">أغنية شرقية 3</div>
-            </div>
+        <div class="song" onclick="changeTrack('chaabi2.mp3', 'أغنية شعبية 2')">
+            <div class="song-title">أغنية شعبية 2</div>
         </div>
-		
-		<div class="songs-container" id="eastern-songs" style="display: none;">
-            <div class="song" onclick="changeTrack('LOOP16.mp3', 'أغنية مغربية 1')">
-                
-                <div class="song-title">أغنية مغربية 1</div>
-            </div>
-            <div class="song" onclick="changeTrack('LOOP20.mp3', 'أغنية مغربية 2')">
-                
-                <div class="song-title">أغنية مغربية 2</div>
-            </div>
-            <div class="song" onclick="changeTrack('LOOP21.mp3', 'أغنية مغربية 3')">
-                
-                <div class="song-title">أغنية مغربية 3</div>
-            </div>
+        <div class="song" onclick="changeTrack('chaabi3.mp3', 'أغنية شعبية 3')">
+            <div class="song-title">أغنية شعبية 3</div>
+        </div>
+        <div class="song" onclick="changeTrack('chaabi4.mp3', 'أغنية شعبية 4')">
+            <div class="song-title">أغنية شعبية 4</div>
         </div>
     </div>
 
-    <!-- القارئ دائمًا في الأسفل -->
-    <div class="player">
-        
-        <div class="track-info" id="track-name">لم يتم اختيار أغنية</div>
-        <audio controls id="audio-player">
-            <source src="" id="audio-source">
-            المتصفح لا يدعم تشغيل الصوت.
-        </audio>
-        <div class="visualizer">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+    <!-- الأمازيغية -->
+    <div class="songs-container" id="amazigh-songs" style="display: none;">
+        <div class="song" onclick="changeTrack('amazigh1.mp3', 'أغنية أمازيغية 1')">
+            <div class="song-title">أغنية أمازيغية 1</div>
+        </div>
+        <div class="song" onclick="changeTrack('amazigh2.mp3', 'أغنية أمازيغية 2')">
+            <div class="song-title">أغنية أمازيغية 2</div>
+        </div>
+        <div class="song" onclick="changeTrack('amazigh3.mp3', 'أغنية أمازيغية 3')">
+            <div class="song-title">أغنية أمازيغية 3</div>
+        </div>
+        <div class="song" onclick="changeTrack('amazigh4.mp3', 'أغنية أمازيغية 4')">
+            <div class="song-title">أغنية أمازيغية 4</div>
         </div>
     </div>
+
+    <!-- الشرقية -->
+    <div class="songs-container" id="eastern-songs" style="display: none;">
+        <div class="song" onclick="changeTrack('eastern1.mp3', 'أغنية شرقية 1')">
+            <div class="song-title">أغنية شرقية 1</div>
+        </div>
+        <div class="song" onclick="changeTrack('eastern2.mp3', 'أغنية شرقية 2')">
+            <div class="song-title">أغنية شرقية 2</div>
+        </div>
+        <div class="song" onclick="changeTrack('eastern3.mp3', 'أغنية شرقية 3')">
+            <div class="song-title">أغنية شرقية 3</div>
+        </div>
+    </div>
+
+    <!-- المغربية -->
+    <div class="songs-container" id="moroccan-songs" style="display: none;">
+        <div class="song" onclick="changeTrack('LOOP16.mp3', 'أغنية مغربية 1')">
+            <div class="song-title">أغنية مغربية 1</div>
+        </div>
+        <div class="song" onclick="changeTrack('LOOP20.mp3', 'أغنية مغربية 2')">
+            <div class="song-title">أغنية مغربية 2</div>
+        </div>
+        <div class="song" onclick="changeTrack('LOOP21.mp3', 'أغنية مغربية 3')">
+            <div class="song-title">أغنية مغربية 3</div>
+        </div>
+        <div class="song" onclick="changeTrack('LOOP022.mp3', 'أغنية مغربية 4')">
+            <div class="song-title">أغنية مغربية 4</div>
+        </div>
+    </div>
+</div>
 
     <script>
-        // قائمة الأغاني
-        const songs = [
-            { file: 'chaabi1.mp3', name: 'أغنية شعبية 1' },
-            { file: 'chaabi2.mp3', name: 'أغنية شعبية 2' },
-            { file: 'chaabi3.mp3', name: 'أغنية شعبية 3' },
-            { file: 'chaabi4.mp3', name: 'أغنية شعبية 4' },
-            { file: 'amazigh1.mp3', name: 'أغنية أمازيغية 1' },
-            { file: 'amazigh2.mp3', name: 'أغنية أمازيغية 2' },
-            { file: 'amazigh3.mp3', name: 'أغنية أمازيغية 3' },
-            { file: 'amazigh4.mp3', name: 'أغنية أمازيغية 4' },
-            { file: 'eastern1.mp3', name: 'أغنية شرقية 1' },
-            { file: 'eastern2.mp3', name: 'أغنية شرقية 2' },
-            { file: 'eastern3.mp3', name: 'أغنية شرقية 3' },
-			{ file: 'LOOP16.mp3', name: 'أغنية مغربية 1' },
-            { file: 'LOOP20.mp3', name: 'أغنية مغربية 2' },
-            { file: 'LOOP21.mp3', name: 'أغنية مغربية 3' }
-        ];
+       // قائمة الأغاني
+const songs = [
+    { file: 'chaabi1.mp3', name: 'أغنية شعبية 1', album: 'popular' },
+    { file: 'chaabi2.mp3', name: 'أغنية شعبية 2', album: 'popular' },
+    { file: 'chaabi3.mp3', name: 'أغنية شعبية 3', album: 'popular' },
+    { file: 'chaabi4.mp3', name: 'أغنية شعبية 4', album: 'popular' },
+    { file: 'amazigh1.mp3', name: 'أغنية أمازيغية 1', album: 'amazigh' },
+    { file: 'amazigh2.mp3', name: 'أغنية أمازيغية 2', album: 'amazigh' },
+    { file: 'amazigh3.mp3', name: 'أغنية أمازيغية 3', album: 'amazigh' },
+    { file: 'amazigh4.mp3', name: 'أغنية أمازيغية 4', album: 'amazigh' },
+    { file: 'eastern1.mp3', name: 'أغنية شرقية 1', album: 'eastern' },
+    { file: 'eastern2.mp3', name: 'أغنية شرقية 2', album: 'eastern' },
+    { file: 'eastern3.mp3', name: 'أغنية شرقية 3', album: 'eastern' },
+    { file: 'LOOP16.mp3', name: 'أغنية مغربية 1', album: 'moroccan' },
+    { file: 'LOOP20.mp3', name: 'أغنية مغربية 2', album: 'moroccan' },
+    { file: 'LOOP21.mp3', name: 'أغنية مغربية 3', album: 'moroccan' },
+    { file: 'LOOP022.mp3', name: 'أغنية مغربية 4', album: 'moroccan' }
+];
 
-        let isRandomPlaying = false;
+let currentTrackIndex = 0;
+let isRandomPlaying = false;
 
-        function showAlbum(album) {
-            // إخفاء جميع الألبومات
-            const albums = document.querySelectorAll('.songs-container');
-            albums.forEach(album => album.style.display = 'none');
+// عرض الألبوم المحدد
+function showAlbum(album) {
+    // إخفاء جميع الألبومات
+    const albums = document.querySelectorAll('.songs-container');
+    albums.forEach(a => a.style.display = 'none');
 
-            // عرض الألبوم المحدد
-            if (album === 'popular') {
-                document.getElementById("popular-songs").style.display = 'flex';
-            } else if (album === 'amazigh') {
-                document.getElementById("amazigh-songs").style.display = 'flex';
-            } else if (album === 'eastern') {
-                document.getElementById("eastern-songs").style.display = 'flex';
-            }
-        }
+    // عرض الألبوم المحدد
+    document.getElementById(`${album}-songs`).style.display = 'flex';
 
-        function changeTrack(audioFile, trackName) {
-            if (isRandomPlaying) {
-                document.getElementById("audio-player").pause();
-                isRandomPlaying = false;
-            }
-            document.getElementById("track-name").textContent = trackName;
-            document.getElementById("audio-source").src = audioFile;
-            document.getElementById("audio-player").load();
-            document.getElementById("audio-player").play();
-        }
+    // تحديث قائمة الأغاني النشطة
+    const activeSongs = songs.filter(song => song.album === album);
+    currentTrackIndex = 0; // إعادة المؤشر إلى البداية
+}
 
-        function playRandomSong() {
-            const randomIndex = Math.floor(Math.random() * songs.length);
-            const randomSong = songs[randomIndex];
-            changeTrack(randomSong.file, randomSong.name);
-            isRandomPlaying = true;
-        }
+// تغيير الأغنية
+function changeTrack(audioFile, trackName) {
+    if (isRandomPlaying) {
+        document.getElementById("audio-player").pause();
+        isRandomPlaying = false;
+    }
 
-        // تشغيل أغنية عشوائية عند بدء الموقع
-        window.onload = function() {
-    showAlbum('popular'); // أو أي ألبوم تريد أن يظهر تلقائيًا عند تحميل الصفحة
+    // تحديث اسم الأغنية
+    document.getElementById("track-name").textContent = trackName;
+
+    // تحديث مصدر الصوت
+    const audioSource = document.getElementById("audio-source");
+    audioSource.src = audioFile;
+
+    // تشغيل الأغنية
+    const audioPlayer = document.getElementById("audio-player");
+    audioPlayer.load();
+    audioPlayer.play();
+
+    // حفظ الحالة في localStorage
+    saveLastPlayed(audioFile, trackName);
+}
+
+// تشغيل أغنية عشوائية
+function playRandomSong() {
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    const randomSong = songs[randomIndex];
+    changeTrack(randomSong.file, randomSong.name);
+    isRandomPlaying = true;
+}
+
+// تشغيل الأغنية التالية
+function playNext() {
+    const currentAlbum = getCurrentAlbum();
+    const activeSongs = songs.filter(song => song.album === currentAlbum);
+
+    if (currentTrackIndex < activeSongs.length - 1) {
+        currentTrackIndex++;
+    } else {
+        currentTrackIndex = 0; // العودة إلى البداية
+    }
+
+    const nextSong = activeSongs[currentTrackIndex];
+    changeTrack(nextSong.file, nextSong.name);
+}
+
+// تشغيل الأغنية السابقة
+function playPrevious() {
+    const currentAlbum = getCurrentAlbum();
+    const activeSongs = songs.filter(song => song.album === currentAlbum);
+
+    if (currentTrackIndex > 0) {
+        currentTrackIndex--;
+    } else {
+        currentTrackIndex = activeSongs.length - 1; // العودة إلى النهاية
+    }
+
+    const prevSong = activeSongs[currentTrackIndex];
+    changeTrack(prevSong.file, prevSong.name);
+}
+
+// الحصول على الألبوم الحالي
+function getCurrentAlbum() {
+    const visibleAlbum = document.querySelector('.songs-container[style*="display: flex"]');
+    return visibleAlbum.id.split('-')[0];
+}
+
+// حفظ آخر أغنية تم تشغيلها
+function saveLastPlayed(file, name) {
+    localStorage.setItem('lastPlayed', JSON.stringify({ file, name }));
+}
+
+// استعادة آخر أغنية تم تشغيلها
+function restoreLastPlayed() {
+    const lastPlayed = JSON.parse(localStorage.getItem('lastPlayed'));
+    if (lastPlayed) {
+        changeTrack(lastPlayed.file, lastPlayed.name);
+    }
+}
+
+// تشغيل أغنية عند تحميل الصفحة
+window.onload = function () {
+    showAlbum('popular'); // عرض الألبوم الشعبي افتراضيًا
+    restoreLastPlayed(); // استعادة آخر أغنية تم تشغيلها
 };
+
+// منع تنزيل ملف الصوت بالضغط droit
+document.querySelector('audio').addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
 
     </script>
 </body>
